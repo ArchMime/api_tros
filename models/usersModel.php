@@ -1,74 +1,140 @@
 <?php
-include '../database.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/database.php';
 
-$new_conecction = $conn;
 
 class Users
 {
     private $id;
     private $username;
     private $userpass;
-    
+
     /*Constructor*/
-    public function __construct($username, $userpass, $id = null)
+    public function __construct($username = null, $userpass = null, $id = null)
     {
         $auxpass = password_hash($userpass, PASSWORD_DEFAULT);
         $this->username = $username;
         $this->userpass = $auxpass;
         $this->id = $id;
     }
-    
+
     /*Getters*/
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->username;
     }
-    public function getUserpass(){
+    public function getUserpass()
+    {
         return $this->userpass;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
     /*Setters*/
-    public function setUsername($username){
+    public function setUsername($username)
+    {
         $this->username = $username;
     }
-    public function setUserpass($userpass){
+    public function setUserpass($userpass)
+    {
         $auxpass = password_hash($userpass, PASSWORD_DEFAULT);
         $this->$auxpass;
     }
     /*Methods*/
     /*Create*/
-    public function createUser(){
-        global $new_conecction;
-        $stm = "INSERT INTO users('id', 'username', 'userpass') VALUES(NULL, ?, ?)";
-        $result = mysqli_prepare($new_conecction, $stm);
+    public function createUser()
+    {
+        global $conn;
+        mysqli_set_charset($conn, 'utf8');
+        $stm = "INSERT INTO `users`(`username`, `userpass`) VALUES( ?, ?)";
+        $result = mysqli_prepare($conn, $stm);
         $validate = mysqli_stmt_bind_param($result, 'ss', $this->username, $this->userpass);
         $validate = mysqli_stmt_execute($result);
-        if($validate){
-            $arr = array( "resp"=>"created");
+
+        if ($validate) {
+            $arr = array("resp" => "created");
             return json_encode($arr);
-        }else{
-            $arr = array("resp"=>"error");
+        } else {
+            $arr = array("resp" => "error", "error"=>mysqli_error($conn));
             return json_encode($arr);
         }
     }
     /*Read*/
-    /*all*/
-    public function readAllUsers(){
-        global $new_conecction;
-        $stm = "SELECT 'id', 'username', 'userpass' FROM users";
-        $result = mysqli_prepare($new_conecction, $stm);
+    public function readAllUsers()
+    {
+        global $conn;
+        $stm = "SELECT * FROM `users`";
+        $result = mysqli_prepare($conn, $stm);
         $validate = mysqli_stmt_execute($result);
-        if($validate){
+        if ($validate) {
             $validate = mysqli_stmt_bind_result($result, $id, $username, $userpass);
             $usersArray = array();
             while (mysqli_stmt_fetch($result)) {
-                $obj = new Users($username, $userpass, $id);
-                $usersArray[$id] = $obj;
+                $auxArr = array(
+                    "username" => $username,
+                    "userpass" => $userpass,
+                    "id" => $id
+                );
+                array_push($usersArray, $auxArr);
             }
             return json_encode($usersArray);
         }
     }
+    public function readOneUsers($id)
+    {
+        global $conn;
+        $stm = "SELECT * FROM `users` WHERE id = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'i', $id);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $validate = mysqli_stmt_bind_result($result, $id, $username, $userpass);
+            while (mysqli_stmt_fetch($result)) {
+                $usersArray = array(
+                    "username" => $username,
+                    "userpass" => $userpass,
+                    "id" => $id
+                );
+            }
+            if (isset($usersArray)) {
+                return json_encode($usersArray);
+            } else {
+                $arr = array("resp" => "error", "error"=>mysqli_error($conn));
+                return json_encode($arr);
+            }
+        }
+    }
+    /*Update*/
+    public function updateUsername($id, $username)
+    {
+        global $conn;
+        $stm = "UPDATE `users` SET `username`= ? WHERE id = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'si', $username, $id);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return json_encode($arr);
+        } else {
+            $arr = array("resp" => "error");
+            return json_encode($arr);
+        }
+    }
+    public function updatePassword($id, $userpass)
+    {
+        global $conn;
+        $auxpass = password_hash($userpass, PASSWORD_DEFAULT);
+        $stm = "UPDATE `users` SET `userpass`= ? WHERE id = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'si', $auxpass, $id);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return json_encode($arr);
+        } else {
+            $arr = array("resp" => "error");
+            return json_encode($arr);
+        }
+    }
 }
-
 ?>

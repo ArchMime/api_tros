@@ -5,4 +5,7 @@ $conn = mysqli_connect(
     '',
     'api_tros'
 );
+if ( !$conn ) {
+    die( 'connect error: '.mysqli_connect_error() );
+  }
 ?>
