@@ -21,9 +21,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
          * all request none
          */
         if (isset($headers['id-application'])) {
-            returnOneApplication($headers['id-application']);
+            returnOneApplication($headers['id-application'], $headers['token']);
         } else {
-            returnAllApplicant();
+            returnAllApplicant($headers['token']);
         }
         break;
     case 'PUT':
@@ -35,7 +35,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $id_app = $headers['id_app'];
         $contacted = $headers['contacted'];
         $coment = $headers['coment'];
-        actualizateApplication($id_app, $contacted, $coment);
+        actualizateApplication($id_app, $contacted, $coment, $headers['token']);
         break;
     case 'DELETE':
         /**
@@ -44,7 +44,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
          * pendient remove cv file
          */
         $id = $headers['id_remove'];
-        removeAplicantion($id);
+        removeAplicantion($id, $headers['token']);
         break;
 };
 ?>

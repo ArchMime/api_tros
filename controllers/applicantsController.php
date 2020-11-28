@@ -6,21 +6,50 @@ function createNewApplicant($cv, $data){
     echo $obj->createApplicant($cv, $data);
 }
 
-function returnAllApplicant(){
-    $obj = new Applicants();
-    echo $obj->readAllApplications();
-}
-function returnOneApplication($id){
-    $obj = new Applicants();
-    echo $obj->readOneApplications($id);
-}
-
-function actualizateApplication($id, $contacted, $comment){
-    $obj =new Applicants();
-    echo $obj->updateApplication($id, $contacted, $comment);
+function returnAllApplicant($token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $obj = new Applicants();
+        $response =  $obj->readAllApplications();
+        echo json_encode(["newtoken"=>$newtoken, "response"=> $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
 }
 
-function removeAplicantion($id){
-    $obj = new Applicants();
-    echo $obj -> deleteAplicant($id);
+function returnOneApplication($id, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $obj = new Applicants();
+        $response = $obj->readOneApplications($id);
+        echo json_encode(["newtoken"=>$newtoken, "response"=> $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function actualizateApplication($id, $contacted, $comment, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $obj = new Applicants();
+        $response = $obj->updateApplication($id, $contacted, $comment);
+        echo json_encode(["newtoken"=>$newtoken, "response"=> $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function removeAplicantion($id, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $obj = new Applicants();
+        $response = $obj -> deleteAplicant($id);
+        echo json_encode(["newtoken"=>$newtoken, "response"=> $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
 }

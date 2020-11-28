@@ -2,6 +2,9 @@
 
 use Firebase\JWT\JWT;
 
+include $_SERVER['DOCUMENT_ROOT'].'/api_tros/vendor/autoload.php';
+
+
 class Authjwt
 {
     private static $secret_key = 'TroskeyPrivate@';
@@ -55,12 +58,25 @@ class Authjwt
             self::$encrypt
         );
 
+        $time = time();
+
         if($decode->aud !== self::Aud())
         {
             throw new Exception("Invalid user logged in.");
+        }elseif($decode->exp < $time)
+        {
+            throw new Exception("Expired token.");
         }
 
         return self::createToken($decode->data->username, $decode->data->id);
 
+    }
+    public static function GetData($token)
+    {
+        return JWT::decode(
+            $token,
+            self::$secret_key,
+            self::$encrypt
+        )->data;
     }
 }

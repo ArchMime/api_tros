@@ -52,11 +52,9 @@ class Users
         $validate = mysqli_stmt_execute($result);
 
         if ($validate) {
-            $arr = array("resp" => "created");
-            return json_encode($arr);
+            return array("resp" => "created");
         } else {
-            $arr = array("resp" => "error", "error"=>mysqli_error($conn));
-            return json_encode($arr);
+            return array("resp" => "error", "error"=>mysqli_error($conn));
         }
     }
     /*Read*/
@@ -77,10 +75,10 @@ class Users
                 );
                 array_push($usersArray, $auxArr);
             }
-            return json_encode($usersArray);
+            return $usersArray;
         }
     }
-    public function readOneUsers($id)
+    public function readUserById($id)
     {
         global $conn;
         $stm = "SELECT * FROM `users` WHERE id = ?";
@@ -97,10 +95,35 @@ class Users
                 );
             }
             if (isset($usersArray)) {
-                return json_encode($usersArray);
+                return $usersArray;
             } else {
                 $arr = array("resp" => "error", "error"=>mysqli_error($conn));
-                return json_encode($arr);
+                return $arr;
+            }
+        }
+    }
+    
+    public function readUserByUsername($username)
+    {
+        global $conn;
+        $stm = "SELECT * FROM `users` WHERE username = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 's', $username);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $validate = mysqli_stmt_bind_result($result, $id, $username, $userpass);
+            while (mysqli_stmt_fetch($result)) {
+                $userArray = array(
+                    "username" => $username,
+                    "userpass" => $userpass,
+                    "id" => $id
+                );
+            }
+            if (isset($userArray)) {
+                return $userArray;
+            } else {
+                $arr = array("resp" => "error", "error"=>mysqli_error($conn));
+                return $arr;
             }
         }
     }
@@ -117,7 +140,7 @@ class Users
             return json_encode($arr);
         } else {
             $arr = array("resp" => "error");
-            return json_encode($arr);
+            return $arr;
         }
     }
     public function updatePassword($id, $userpass)
@@ -130,10 +153,10 @@ class Users
         $validate = mysqli_stmt_execute($result);
         if ($validate) {
             $arr = array("resp" => "success");
-            return json_encode($arr);
+            return $arr;
         } else {
             $arr = array("resp" => "error");
-            return json_encode($arr);
+            return $arr;
         }
     }
 }

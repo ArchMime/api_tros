@@ -16,7 +16,7 @@ class Applicants
     private $message;
     private $cv_route;
     private $contacted;
-    private $internal_coment;
+    private $internal_comment;
 
     /*Constructor*/
     public function __construct($name = null, $lastname = null, $email = null, $tel = null, $secondTel = null, $profession = null, $trainings = null, $monotax = null, $cuit = null, $message = null, $cv_route = null)
@@ -80,7 +80,7 @@ class Applicants
         $result = mysqli_prepare($conn, $stm);
         $validate = mysqli_stmt_execute($result);
         if ($validate) {
-            $validate = mysqli_stmt_bind_result($result, $id, $name, $lastname, $email, $tel, $secondTel, $profession, $trainings, $monotax, $cuit, $message, $cv_route, $contacted, $internal_coment);
+            $validate = mysqli_stmt_bind_result($result, $id, $name, $lastname, $email, $tel, $secondTel, $profession, $trainings, $monotax, $cuit, $message, $cv_route, $contacted, $internal_comment);
             $applicationsArray = array();
             while (mysqli_stmt_fetch($result)) {
                 $auxArr = array(
@@ -96,7 +96,7 @@ class Applicants
                     "message" => $message,
                     "cv" => $cv_route,
                     "contacted" => $contacted,
-                    "internal_coment" => $internal_coment
+                    "internal_comment" => $internal_comment
                 );
                 array_push($applicationsArray, $auxArr);
             }
@@ -112,7 +112,7 @@ class Applicants
         $validate = mysqli_stmt_bind_param($result, 'i', $id);
         $validate = mysqli_stmt_execute($result);
         if ($validate) {
-            $validate = mysqli_stmt_bind_result($result, $id, $name, $lastname, $email, $tel, $secondTel, $profession, $trainings, $monotax, $cuit, $message, $cv_route, $contacted, $internal_coment);
+            $validate = mysqli_stmt_bind_result($result, $id, $name, $lastname, $email, $tel, $secondTel, $profession, $trainings, $monotax, $cuit, $message, $cv_route, $contacted, $internal_comment);
             while (mysqli_stmt_fetch($result)) {
                 $applicationArr = array(
                     "id" => $id,
@@ -127,7 +127,7 @@ class Applicants
                     "message" => $message,
                     "cv" => $cv_route,
                     "contacted" => $contacted,
-                    "internal_coment" => $internal_coment
+                    "internal_comment" => $internal_comment
                 );
             }
             if (isset($applicationArr)) {
@@ -138,11 +138,11 @@ class Applicants
             }        }
     }
     /*Update*/
-    function updateApplication($id, $contacted, $internal_coment){
+    function updateApplication($id, $contacted, $internal_comment){
         global $conn;
-        $stm = "UPDATE `applicants` SET `contacted`= ?, `internal_coment` = ?  WHERE id = ?";
+        $stm = "UPDATE `applicants` SET `contacted`= ?, `internal_comment` = ?  WHERE id = ?";
         $result = mysqli_prepare($conn, $stm);
-        $validate = mysqli_stmt_bind_param($result, 'isi', $contacted, $internal_coment, $id);
+        $validate = mysqli_stmt_bind_param($result, 'isi', $contacted, $internal_comment, $id);
         $validate = mysqli_stmt_execute($result);
         if ($validate) {
             $arr = array("resp" => "success");

@@ -7,21 +7,22 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         /**
          * post create new user
-         * headers request username - userpass
+         * headers request token
+         * post request username - userpass
          */
-        createNewUser($headers['username'], $headers['userpass']);
+        createNewUser($_POST['username'], $_POST['userpass'], $headers['token']);
         break;
 
     case 'GET':
         /**
          * get users
-         * one headers request id
-         * all headers request none
+         * one headers request id - token
+         * all headers request none - token
          */
         if(isset($headers['id-search'])){
-            returnOneUser($headers['id-search']);
+            returnUserById($headers['id-search'], $headers['token']);
         }else{
-            returnAllUsers();
+            returnAllUsers($headers['token']);
         }
         break;
 
@@ -29,15 +30,15 @@ switch ($_SERVER['REQUEST_METHOD']) {
         /**
          * can only be updated by the user who owns the account
          * put username
-         * headers request session - action = updateUsername - newusername
+         * headers request session - action = updateUsername - newusername - token
          * put userpass
-         * headers request session - action = updatePassword - newuserpass
+         * headers request session - action = updatePassword - newuserpass - token
          */
 
         if(isset($headers['action']) && $headers['action'] == 'updateUsername'){
-            changeUsername($headers['id'], $headers['newUsername']);
+            changeUsername($headers['id'], $headers['newUsername'], $headers['token']);
         }else if(isset($headers['action']) && $headers['action'] == 'updateUserpass'){
-            changeUserpass($headers['id'], $headers['newUserpass']);
+            changeUserpass($headers['id'], $headers['newUserpass'], $headers['token']);
         }else{
             $arr = array("resp" => "error");
             return json_encode($arr);
