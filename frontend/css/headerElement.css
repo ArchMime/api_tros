@@ -1,0 +1,26 @@
+.header{
+    border-radius: 0 0 2% 2%;
+    background-color: #64778bff;
+    width: auto;
+    height: auto;
+}
+
+.headerLogo{
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+    ), url("../images/bg_low_tros_min.jpg") no-repeat center center fixed;
+    width: 100%;
+}
+
+.imglogo{
+    width: 120px;
+    height: auto;
+    margin: 10em;
+}
+
+.leyenda > p{
+    height: auto;
+    color: #e8e8e8ff;
+    font-size: 1.5em;
+}

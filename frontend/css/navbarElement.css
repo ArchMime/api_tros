@@ -1,0 +1,26 @@
+.cst-navbar{
+    background-color: #2a384fff;
+    
+}
+
+.nav-link{
+    color: #e8e8e8ff;
+}
+
+.nav-link:hover{
+    color: #64778bff;
+}
+
+.cst-btn{
+    background-color: #f05454ff;
+    color: #fdca35ff;
+}
+
+.navbar-toggler {
+    border-color: #64778bff;
+}
+
+.navbar-toggler-icon{
+    background-image: url('../images/rect1026-9-1.png');
+    opacity: 0.5;
+}
