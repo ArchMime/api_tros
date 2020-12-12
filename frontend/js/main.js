@@ -31,6 +31,7 @@ class MainElement extends HTMLElement{
     }
     connectedCallback(){
         this.innerHTML = this.main
+        document.getElementById('loader').style.display = 'none'
     }
 
 }

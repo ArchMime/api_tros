@@ -10,7 +10,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
          * request body/data
          * request body/file
          */
-        $cv = $_FILES['cv'];
+        if(isset($_FILES['cv'])){
+            $cv = $_FILES['cv'];
+        } else {
+            $cv = '';
+        }
+
         $data = $_POST;
         createNewApplicant($cv, $data);
         break;

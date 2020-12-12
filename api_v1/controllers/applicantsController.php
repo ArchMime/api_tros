@@ -5,7 +5,8 @@ include $_SERVER['DOCUMENT_ROOT']."/api_tros/api_v1/models/authjwtModel.php";
 
 function createNewApplicant($cv, $data){
     $obj = new Applicants();
-    echo $obj->createApplicant($cv, $data);
+    $auxArr = $obj->createApplicant($cv, $data);
+    echo json_encode($auxArr);
 }
 
 function returnAllApplicant($token){
