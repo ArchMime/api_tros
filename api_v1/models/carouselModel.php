@@ -35,25 +35,23 @@ class Carusel
     public static function getSelectedImages(){
         
         global $conn;
-    $stm = "SELECT * FROM `carouselphoto` WHERE selected = 1";
-    $result = mysqli_prepare($conn, $stm);
-    $validate = mysqli_stmt_execute($result);
-    if ($validate) {
-        $validate = mysqli_stmt_bind_result($result, $id, $title, $description, $pathImg, $selected);
-        $carouselArray = array();
-        while (mysqli_stmt_fetch($result)) {
-            $auxArr = array(
-                "title" => $title,
-                "description" => $description,
-                "path" => $pathImg,
-                "selected" => $selected,
-                "id" => $id
-            );
-            array_push($carouselArray, $auxArr);
+        $stm = "SELECT * FROM `carouselphoto` WHERE selected = 1";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $validate = mysqli_stmt_bind_result($result, $id, $title, $description, $pathImg, $selected);
+            $carouselArray = array();
+            while (mysqli_stmt_fetch($result)) {
+                $auxArr = array(
+                    "title" => $title,
+                    "description" => $description,
+                    "path" => $pathImg,
+                    "selected" => $selected,
+                    "id" => $id
+                );
+                array_push($carouselArray, $auxArr);
+            }
+            return $carouselArray;
         }
-        return $carouselArray;
-    }
     }
 }
-
-?>

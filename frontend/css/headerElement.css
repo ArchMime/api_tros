@@ -1,5 +1,4 @@
 .header{
-    border-radius: 0 0 2% 2%;
     background-color: #64778bff;
     width: auto;
     height: auto;
@@ -9,8 +8,9 @@
     background:linear-gradient(
         rgba(0, 0, 0, 0.4),
         rgba(0, 0, 0, 0.4)
-    ), url("../images/bg_low_tros_min.jpg") no-repeat center center fixed;
+    ), url("../images/bg_small_tros-min.jpg") no-repeat center center fixed;
     width: 100%;
+    background-size: cover;
 }
 
 .imglogo{

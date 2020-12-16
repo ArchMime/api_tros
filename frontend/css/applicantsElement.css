@@ -1,0 +1,22 @@
+.applicantsMessage{
+    border: 1px solid #2a384fff;
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+    ), url("../images/bg_small_tros-min.jpg") no-repeat center center fixed;
+    width: 100%;
+    background-size: cover;
+}
+
+
+
+.jobsList{
+    list-style-type: none;
+    color: #e8e8e8ff;
+    font-size: x-large;
+}
+.jobsList > li{
+    list-style-type: none;
+    color: #e8e8e8ff;
+    font-size: x-large;
+}

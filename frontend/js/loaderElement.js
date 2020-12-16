@@ -3,7 +3,7 @@ class loaderElement extends HTMLElement{
         super()
         this.template = `
         <link rel="stylesheet" href="./frontend/css/loadElement.css">
-        <div class="col-12 d-flex justify-content-center"
+        <div class="col-12 d-flex justify-content-center">
         <div class="lds-ring">
             <div></div>
             <div></div>

@@ -1,0 +1,15 @@
+.actContent{
+    background-color: #64778bff;
+}
+
+.actRow{
+    color: #222831ff;
+    background-color: #e8e8e8ff;
+}
+
+.actText{
+    height: 3em;
+}
+.actText > div > p{
+    color: #e8e8e8ff !important;
+}

@@ -2,9 +2,8 @@ class HomeElement extends HTMLElement{
     constructor(){
         super()
         this.template = `
-        <navbar-el></navbar-el>
         <link rel="stylesheet" href="./frontend/css/headerElement.css">
-        <div class="header">
+        <div class="header rounded-bottom">
             <div class="headerLogo d-flex justify-content-center">
                 <img class="imglogo" src="./frontend/images/logo_tr-min.png" alt="logo">
             </div>
@@ -13,6 +12,8 @@ class HomeElement extends HTMLElement{
             </div>
         </div>
         <carrousel-el></carrousel-el>
+        <activity-el></activity-el>
+        <footer-el></footer-el>
         `
     }
     connectedCallback(){

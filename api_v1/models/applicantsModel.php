@@ -43,7 +43,7 @@ class Applicants
             $size = $cv['size'];
             $super_type = explode("/", $type);
         
-            if($size <= 3000000 && $super_type[0] == 'text' || $super_type[0] == 'application' || $super_type[0] == 'image' ){
+            if($size <= (3 * 1024 * 1024) && $super_type[0] == 'text' || $super_type[0] == 'application' || $super_type[0] == 'image' ){
         
                 $dest = $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/uploads/';
                 $relativeDest = './api_tros/api_v1/uploads/';
@@ -52,7 +52,7 @@ class Applicants
                 $ext = pathinfo($cv_route, PATHINFO_EXTENSION);
                 $new_cv_route = $dest . 'cv-' . $data['name'] . '-' . $data['lastname'] . '-' . $data['cuit'] . '.' . $ext;
                 rename($cv_route, $new_cv_route);
-                //$new_cv_route = $relativeDest . 'cv-' . $data['name'] . '-' . $data['lastname'] . '-' . $data['cuit'] . '.' . $ext;
+                $new_cv_route = $relativeDest . 'cv-' . $data['name'] . '-' . $data['lastname'] . '-' . $data['cuit'] . '.' . $ext;
         
             }else{
                 $new_cv_route= '';

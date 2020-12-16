@@ -2,7 +2,6 @@ class ContactedElement extends HTMLElement{
     constructor(){
         super()
         this.template = `
-        <navbar-el></navbar-el>
         <h3>en contacto</h3>
         `
     }

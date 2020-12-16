@@ -1,8 +1,7 @@
-class bookingElement extends HTMLElement{
+class BookingElement extends HTMLElement{
     constructor(){
         super()
         this.template = `
-        <navbar-el></navbar-el>
         <h3>en contrataciones</h3>
         `
     }
@@ -11,4 +10,4 @@ class bookingElement extends HTMLElement{
     }
 }
 
-window.customElements.define('booking-el', bookingElement)
+window.customElements.define('booking-el', BookingElement)

@@ -1,9 +1,9 @@
 
 const template = `
         <link rel="stylesheet" href="./frontend/css/navbarElement.css">
-        <nav class="navbar navbar-expand-lg cst-navbar">
+        <nav class="navbar navbar-expand-lg cst-navbar" id="regularnavbar">
             <a class="navbar-brand" href="/api_tros/">
-                <img src="./frontend/images/logo_tros_srl_min_y.png" width="100" class="d-inline-block align-top" alt="" loading="lazy">
+                <img src="./frontend/images/logo_tros_srl-min.png" width="100" class="d-inline-block align-top" alt="" loading="lazy">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,6 @@ const template = `
             </div>
         </nav>
 `
-
 
 class NavbarElement extends HTMLElement {
     constructor() {
