@@ -1,22 +1,21 @@
 .applicantsMessage{
     border: 1px solid #2a384fff;
     background:linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
     ), url("../images/bg_small_tros-min.jpg") no-repeat center center fixed;
     width: 100%;
     background-size: cover;
 }
 
-
-
 .jobsList{
     list-style-type: none;
     color: #e8e8e8ff;
-    font-size: x-large;
+    font-size: 1.5em;
+    font-family: -apple-system,"BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 .jobsList > li{
     list-style-type: none;
     color: #e8e8e8ff;
-    font-size: x-large;
+    font-family: -apple-system,"BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }

@@ -39,6 +39,8 @@ const template = `
                 <applicantform-el class="jobsFom col-12 col-lg-6 my-2 px-2" id="applicantForm"></applicantform-el>
 
                 </div>
+                </div>
+                
                 <footer-el></footer-el>
 `
 
