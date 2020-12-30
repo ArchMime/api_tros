@@ -1,4 +1,4 @@
-const dataTemplate = (_attr)=>{
+const dataTemplate = (_attr) => {
     return `
     <link rel="stylesheet" href="./frontend/css/carouselElement.css">
     <div class="carouselImages col-12 d-flex justify-content-center px-2 my-5 rounded">
@@ -49,20 +49,22 @@ const dataTemplate = (_attr)=>{
     </div>`
 }
 
-class CarrouselElement extends HTMLElement{
-    constructor(){
+class CarrouselElement extends HTMLElement {
+    constructor() {
         super()
         this.template = `<loader-el></loader-el>`
     }
 
-    calledBD = async()=>{
-        const resp = await axios.get('http://localhost:8080/api_tros/api_v1/app/carousel.php')
+    calledBD = async () => {
+        const resp = await axios.get('http://192.168.1.109:8080/api_tros/api_v1/app/carousel.php')
         var templateUpdate = dataTemplate(resp.data)
         this.innerHTML = templateUpdate
+
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.innerHTML = this.template
+        document.getElementById('navbarLanding').style.display = ''
         this.calledBD()
     }
 

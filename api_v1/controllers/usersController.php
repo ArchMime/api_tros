@@ -7,10 +7,26 @@ function singInUser($username, $password){
         $obj = new Users();
         $user = $obj->readUserByUsername($username);
         if (!empty($user['userpass']) && password_verify($password, $user['userpass'])){
-            $auxArr = array('token' => Authjwt::createToken($user['username'], $user['id']));
+            $auxArr = array('token' => Authjwt::createToken($user['username'], $user['id']), 'username'=>$user['username'], 'userid'=>$user['id']);
             echo json_encode($auxArr);
         } else {
             throw new Exception('user or pass not valid');
+        }
+    } catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function validateLogin($username, $id, $token){
+    try {
+        $obj = new Users();
+        $user = $obj->readUserById($id);
+        if (!empty($user['username']) && $user['username'] == $username){
+            $auxArr = array('token' => Authjwt::ValidateData($token, $id, $username));
+            echo json_encode($auxArr);
+        } else {
+            throw new Exception('data not valid');
         }
     } catch (Exception $e) {
         $auxArr = array('error' => $e->getMessage());

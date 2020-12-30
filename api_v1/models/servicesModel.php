@@ -21,6 +21,23 @@ class Services
         }
     }
     */
+
+    public static function newService($data)
+    {
+        global $conn;
+        $stm = "INSERT INTO `services`(`id`, `name`, `description`, `value`) VALUES (null, ?, ?,?)";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'ssi', $data['name'],  $data['description'], $data['value']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
     public static function GetServices()
     {
         global $conn;
@@ -34,7 +51,7 @@ class Services
                 $auxArr = array(
                     "id" => $id,
                     "name" => $name,
-                    "desciption" => $description,
+                    "description" => $description,
                     "value" => $value
                 );
                 array_push($servicesArray, $auxArr);

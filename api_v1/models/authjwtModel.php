@@ -71,6 +71,7 @@ class Authjwt
         return self::createToken($decode->data->username, $decode->data->id);
 
     }
+
     public static function GetData($token)
     {
         return JWT::decode(
@@ -78,5 +79,32 @@ class Authjwt
             self::$secret_key,
             self::$encrypt
         )->data;
+    }
+    
+    public static function ValidateData($token, $id, $username){
+        if(empty($token))
+        {
+            throw new Exception("Invalid token supplied.");
+        }
+
+        $decode = JWT::decode(
+            $token,
+            self::$secret_key,
+            self::$encrypt
+        );
+
+        $time = time();
+
+        if($decode->aud !== self::Aud())
+        {
+            throw new Exception("Invalid user logged in.");
+        }elseif($decode->exp < $time)
+        {
+            throw new Exception("Expired token.");
+        }elseif($decode->data->username != $username && $decode->data->id != $id){
+            throw new Exception("invalid data.");
+        }
+
+        return self::createToken($decode->data->username, $decode->data->id);
     }
 }

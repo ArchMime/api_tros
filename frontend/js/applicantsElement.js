@@ -52,6 +52,7 @@ class ApplicantElement extends HTMLElement{
     }
     connectedCallback(){
         this.innerHTML = template
+        document.getElementById('navbarLanding').style.display = ''
     }
 }
 

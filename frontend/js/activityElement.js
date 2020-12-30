@@ -1,4 +1,4 @@
-const template =`
+const template = `
     <link rel="stylesheet" href="./frontend/css/activitysElement.css">
         <div class="actContent col-12 d-flex justify-content-center px-2 my-5 rounded">
             <div class="shellact col-lg-10 col-sm-12 justify-content-center my-2 rounded">
@@ -34,12 +34,14 @@ const template =`
 
 
 class ActivityElement extends HTMLElement {
-                constructor() {
-                super()
-            }
+    constructor() {
+        super()
+    }
     connectedCallback() {
-                this.innerHTML = template
-            }
+        this.innerHTML = template
+        document.getElementById('navbarLanding').style.display = ''
+
+    }
 }
 
 window.customElements.define('activity-el', ActivityElement)

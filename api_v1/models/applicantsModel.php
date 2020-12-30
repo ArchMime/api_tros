@@ -3,38 +3,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/database.php';
 
 class Applicants
 {
-    private $id;
-    private $name;
-    private $lastname;
-    private $email;
-    private $tel;
-    private $secondTel;
-    private $profession;
-    private $trainings;
-    private $monotax;
-    private $cuit;
-    private $message;
-    private $cv_route;
-    private $contacted;
-    private $internal_comment;
-
-    /*Constructor*/
-    public function __construct($name = null, $lastname = null, $email = null, $tel = null, $secondTel = null, $profession = null, $trainings = null, $monotax = null, $cuit = null, $message = null, $cv_route = null)
-    {
-        $this->name = $name;
-        $this->lastname = $lastname;
-        $this->email = $email;
-        $this->tel = $tel;
-        $this->secondTel = $secondTel;
-        $this->profession = $profession;
-        $this->trainings = $trainings;
-        $this->monotax = $monotax;
-        $this->message = $message;
-        $this->cv_route = $cv_route;
-    }
-    /*Getters*/
-    /*Setters*/
-
     /*Methods*/
     /*Create*/
     public function createApplicant($cv,  $data){

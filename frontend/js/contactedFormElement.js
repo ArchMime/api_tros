@@ -41,7 +41,7 @@ class ContactedFormElement extends HTMLElement{
             <div class="col-12 my-2">
                 <label class="" for="archive">Adjuntar un archivo *</label>
                 <input type="file" name="archive" id="archive" style="visibility:hidden;"
-                    accept="text/plain, image/*, .pdf, .doc, .docx">
+                    accept="text/plain, image/*, .pdf, .doc, .docx" multiple>
                 <label for="archive" class="form-control d-flex justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
                         <path
@@ -116,6 +116,7 @@ class ContactedFormElement extends HTMLElement{
 
     connectedCallback(){
         this.innerHTML = this.template
+        document.getElementById('navbarLanding').style.display = ''
     }
 }
 

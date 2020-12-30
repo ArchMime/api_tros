@@ -12,4 +12,14 @@ function getAllServices(){
     }
 }
 
+function createNewService($data){
+    try {
+        $response = Services::newService($data);
+        echo json_encode($response);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
 ?>

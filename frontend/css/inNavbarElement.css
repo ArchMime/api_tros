@@ -1,0 +1,26 @@
+.cst-navbar{
+    background-color: #64778bff;
+    
+}
+
+.nav-link{
+    color: #e8e8e8ff;
+}
+
+.nav-link:hover{
+    color: #64778bff;
+}
+
+.cst-btn{
+    background-color: #f05454ff;
+    color: #fdca35ff;
+}
+
+.navbar-toggler {
+    border-color: #64778bff;
+}
+
+.navbar-toggler-icon{
+    background-image: url('../images/brg_icon-min.png');
+    opacity: 0.5;
+}

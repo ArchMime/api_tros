@@ -1,4 +1,7 @@
 <?php
+
+use GuzzleHttp\Psr7\UploadedFile;
+
 include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/database.php';
 
 class Gallery
@@ -26,11 +29,15 @@ class Gallery
         }
     }
 
-    public static function addImage($data, $album){
-        $path = $_SERVER['DOCUMENT_ROOT']."/api_tros/api_v1/images/".$album;
+    public static function addImage($uploadFiles,$data){
+        $path = $_SERVER['DOCUMENT_ROOT']."/api_tros/api_v1/images/";
 
+        $countFiles = count($uploadFiles['name']);
+
+        for($i=0;$i<$countFiles;$i++){
+            echo ($uploadFiles['name'][$i] . ", ");
+        };
     }
-
 }
 
 ?>

@@ -70,13 +70,16 @@ class ActivityListElement extends HTMLElement {
 
     calledBD = async () => {
         const resp = await axios.get('http://localhost:8080/api_tros/api_v1/app/services.php')
-        const subresp = await axios.get('http://localhost:8080/api_tros/api_v1/app/subservices.php')
+        const subresp = await axios.get('http://localhost:8080/api_tros/api_v1/app/subservices.php', {headers: {
+            'action': 'getall'
+        }})
         
         this.innerHTML = makeTemplate(resp.data, subresp.data)
     }
 
     connectedCallback() {
         this.innerHTML = this.template
+        document.getElementById('navbarLanding').style.display = ''
         this.calledBD()
     }
 }

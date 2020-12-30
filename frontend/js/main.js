@@ -3,20 +3,27 @@
  * importar y registrar todos los elementos
  * y manipular el router de la aplicación
  */
-import './navbarElement.js'
-import './homeElement.js'
-import './bookingElement.js'
-import './galeryElement.js'
-import './contactedElement.js'
-import './contactedFormElement.js'
-import './applicantsElement.js'
-import './applicantsFormElement.js'
-import './intranetElement.js'
-import './carouselElement.js'
 import './activityElement.js'
 import './activityListElement.js'
-import './notfoundElement.js'
+import './applicantsElement.js'
+import './applicantsFormElement.js'
+import './bookingElement.js'
+import './cardNewServiceElement.js'
+import './cardServicesElement.js'
+import './cardSubServicesElement.js'
+import './carouselElement.js'
+import './contactedElement.js'
+import './contactedFormElement.js'
 import './footerElement.js'
+import './galeryElement.js'
+import './homeElement.js'
+import './intranetElement.js'
+import './intranetDasboardElement.js'
+import './loaderElement.js'
+import './loginElement.js'
+import './navbarElement.js'
+import './notfoundElement.js'
+import './panelServicesElement.js'
 
 /*
 paleta de colores
@@ -34,15 +41,17 @@ class MainElement extends HTMLElement{
         super()
         this.main = `
         <div class="container">
-            <navbar-el></navbar-el>
+            <navbar-el id="navbarLanding"></navbar-el>
             <div id="outlet"></div>
         </div>
         `
     }
     connectedCallback(){
+        console.clear()
         this.innerHTML = this.main
         console.log('en main')
         document.getElementById('loader').style.display = 'none'
+        document.getElementById('navbarLanding').style.display = ''
     }
 
 }

@@ -32,6 +32,7 @@ class ContactedElement extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = this.template
+        document.getElementById('navbarLanding').style.display = ''
     }
 }
 
