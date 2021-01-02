@@ -2,7 +2,7 @@
 
 use Firebase\JWT\JWT;
 
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/vendor/autoload.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/vendor/autoload.php';
 
 
 class Authjwt

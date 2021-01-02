@@ -23,16 +23,6 @@
     <main-element></main-element>
 
     <div class="container">
-        <div class="d-flex justify-content-end align-items-center w-100 mb-n4">
-            <div class="mr-4">
-                <span>Usuario: el nombre de usuario</span>
-            </div>
-            <button class="btn btn-lg btn-warning">Cerrar sesión</button>
-        </div>
-        <div class="title d-flex justify-content-center py-5">
-            <img src="./frontend/images/logo_tros_inet_Y-min.png" width="200" class="d-inline-block align-top" alt=""
-                loading="lazy">
-        </div>
 
         <div class="innavbar">
             <link rel="stylesheet" href="./frontend/css/inNavbarElement.css">
@@ -61,7 +51,8 @@
             </div>
             <div class="row">
                 <nav class="col-12" id="regularnavbar">
-                    <p>En esta sección podrá ver los servicios ofrecidos actualmente en la página principal, editar su información, borrarlos o agregar nuevos.</p>
+                    <p>En esta sección podrá ver los servicios ofrecidos actualmente en la página principal, editar su
+                        información, borrarlos o agregar nuevos.</p>
                     <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#helpexpand"
                         aria-controls="helpexpand" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="">ayuda</span>
@@ -69,7 +60,14 @@
 
                     <div class="collapse navbar-collapse justify-content-center" id="helpexpand">
                         <div class="navbar-nav align-items-center">
-                            <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus nisi accusamus earum facere sit vero qui voluptatibus consequatur deserunt? Libero molestias deserunt, incidunt ipsum iure aspernatur sed laudantium consectetur in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur vel eaque recusandae pariatur quidem quam accusamus sequi, id aliquid nihil tempore at exercitationem non fugiat cupiditate enim magni explicabo adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde, aspernatur quia neque sapiente optio, quo asperiores, libero aperiam nesciunt praesentium odit cum placeat voluptates itaque nihil rerum enim accusantium. Culpa?
+                            <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus nisi accusamus earum
+                                facere sit vero qui voluptatibus consequatur deserunt? Libero molestias deserunt,
+                                incidunt ipsum iure aspernatur sed laudantium consectetur in. Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Aspernatur vel eaque recusandae pariatur quidem quam
+                                accusamus sequi, id aliquid nihil tempore at exercitationem non fugiat cupiditate enim
+                                magni explicabo adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Unde, aspernatur quia neque sapiente optio, quo asperiores, libero aperiam nesciunt
+                                praesentium odit cum placeat voluptates itaque nihil rerum enim accusantium. Culpa?
                             </h5>
                         </div>
                     </div>
@@ -77,34 +75,87 @@
             </div>
             <div class="row tarjetas">
                 <div class="col-12 border border-success rounded my-2">
-                    <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                    <div class="row">
+                        <div class="col-12 my-3">
+                            <h3>Nuevo servicio</h3>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="name">Nombre del servicio:</label>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <input type="text" name="name" id="name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="description">Descripción del servicio:</label>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <input type="text" name="description" id="description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="value">Valor:</label>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <input type="text" name="value" id="value" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 my-2">
+                        <button class="btn btn-block btn-primary my-3">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row tarjetas">
+                <div class="col-12 border border-success rounded my-2">
+                    <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel
+                        pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis
+                        voluptates ipsam minima alias rerum nesciunt vel.</p>
                     <div class="row justify-content-center">
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                         <div class="col-11 col-md-5 col-lg-3 m-2 border border-primary rounded">
-                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
+                            <p class="m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti quia
+                                dolorum vel pariatur ut illo obcaecati accusamus delectus, possimus tenetur fuga. Iusto
+                                perferendis voluptates ipsam minima alias rerum nesciunt vel.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-    
+
             </div>
 
         </div>

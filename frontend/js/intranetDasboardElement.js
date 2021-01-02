@@ -56,7 +56,7 @@ class IntranetDashboardElement extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'sendprop'){
+        if (name === 'sendprop') {
             this.prop = JSON.parse(newValue)
         }
 
@@ -113,12 +113,17 @@ class IntranetDashboardElement extends HTMLElement {
                 break;
             case 'users':
                 this.panel = `
-                    <div id="panel" class="d-flex justify-content-center mt-3">
-    
-                        <p>usuarios</p>
-    
-                    </div>
-                    `
+                        <div id="panel" class="d-flex justify-content-center mt-3">
+        
+                            <p>usuarios</p>
+        
+                        </div>
+                        `
+                break;
+            case 'loader':
+                this.panel = `
+                        <loader-el></loader-el>
+                            `
                 break;
 
         }
@@ -166,7 +171,6 @@ class IntranetDashboardElement extends HTMLElement {
     }
 
     connectedCallback() {
-
     }
 }
 

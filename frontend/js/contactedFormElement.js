@@ -1,3 +1,5 @@
+import __SERVER_PATH from './ENV.js'
+
 class ContactedFormElement extends HTMLElement{
     constructor(){
         super()
@@ -102,7 +104,7 @@ class ContactedFormElement extends HTMLElement{
             
             console.log(formData)
 
-             const call = await axios.post('http://localhost:8080/api_tros/api_v1/app/contacted.php', formData, {
+             const call = await axios.post(`${__SERVER_PATH}/api_v1/app/contacted.php`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

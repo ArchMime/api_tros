@@ -20,7 +20,6 @@ class CardSubServicesElement extends HTMLElement{
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'dataprop') {
             this.dataprops = JSON.parse(newValue)
-            console.log(this.dataprops)
         }
     }
 

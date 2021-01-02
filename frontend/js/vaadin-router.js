@@ -2335,7 +2335,7 @@ function isDevelopmentMode() {
       return true;
     }
 
-    if (!isLocalhost()) {
+    if (!is192.168.1.109()) {
       return false;
     }
 
@@ -2354,8 +2354,8 @@ function isForcedDevelopmentMode() {
   return localStorage.getItem("vaadin.developmentmode.force");
 }
 
-function isLocalhost() {
-  return (["localhost","127.0.0.1"].indexOf(window.location.hostname) >= 0);
+function is192.168.1.109() {
+  return (["192.168.1.109","127.0.0.1"].indexOf(window.location.hostname) >= 0);
 }
 
 function isFlowProductionMode() {

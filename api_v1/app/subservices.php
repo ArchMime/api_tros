@@ -1,7 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/database.php';
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/controllers/subServicesController.php';
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/database.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/controllers/subServicesController.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/header.php';
 
 
 $headers = getallheaders();

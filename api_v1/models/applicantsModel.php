@@ -13,7 +13,7 @@ class Applicants
         
             if($size <= (3 * 1024 * 1024) && $super_type[0] == 'text' || $super_type[0] == 'application' || $super_type[0] == 'image' ){
         
-                $dest = $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/uploads/';
+                $dest = $_SERVER['DOCUMENT_ROOT'] .'/api_tros/api_v1/uploads/';
                 $relativeDest = './api_tros/api_v1/uploads/';
                 move_uploaded_file($cv['tmp_name'], $dest . $cv['name']);
                 $cv_route = $dest . $cv['name'];

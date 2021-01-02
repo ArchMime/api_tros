@@ -18,7 +18,7 @@ const template = `
                             <div class="sticky">
 
                                 <div class="descripcion text-center col-sm-12 my-4" id="p-desc">
-                                    <p>Reaizamos nuestro trabajo en distintas zonas de capital y gran buenos aires</p>
+                                    <p>Realizamos nuestro trabajo en distintas zonas de capital y gran buenos aires</p>
                                 </div>
                                 <div class="mapa" id="mapa-desc">
                                     <img class="img-fluid" id="mapa" src="./frontend/images/bsas_map-min.png"

@@ -1,3 +1,4 @@
+import __SERVER_PATH from './ENV.js'
 
 class PanelServicesElement extends HTMLElement {
     constructor() {
@@ -34,10 +35,9 @@ class PanelServicesElement extends HTMLElement {
 
     appendedServicesCard = async()=>{
         let auxtemplate = ''
-        const resp = await axios.get('http://localhost:8080/api_tros/api_v1/app/services.php')
+        const resp = await axios.get(`${__SERVER_PATH}/api_v1/app/services.php`)
         if (resp.data.length) {
             for (let i = 0; i < resp.data.length; i++) {
-                const data = resp.data[i];
                 let mockup = `
                 <cardservices-el id="cardservice_${resp.data[i]['id']}"></cardservices-el>
                 `
@@ -62,7 +62,7 @@ class PanelServicesElement extends HTMLElement {
 
     newservice(){
         let newservice = document.getElementById("newservice")
-        newservice.innerHTML = `<cardnewservice-el></cardnewservice-el>`
+        newservice.innerHTML = `<cardnewservice-el id="newserviceform"></cardnewservice-el>`
     }
 
     connectedCallback() {

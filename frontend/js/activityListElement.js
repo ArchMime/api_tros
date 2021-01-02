@@ -1,3 +1,5 @@
+import __SERVER_PATH from './ENV.js'
+
 const makeTemplate = (_services, _subservices) => {
     let templateServices = ''
     let templateSubservices = ''
@@ -60,8 +62,6 @@ const makeTemplate = (_services, _subservices) => {
     return resultTemplate
 }
 
-
-
 class ActivityListElement extends HTMLElement {
     constructor() {
         super()
@@ -69,11 +69,11 @@ class ActivityListElement extends HTMLElement {
     }
 
     calledBD = async () => {
-        const resp = await axios.get('http://localhost:8080/api_tros/api_v1/app/services.php')
-        const subresp = await axios.get('http://localhost:8080/api_tros/api_v1/app/subservices.php', {headers: {
+        const resp = await axios.get(`${__SERVER_PATH}/api_v1/app/services.php`)
+        const subresp = await axios.get(`${__SERVER_PATH}/api_v1/app/subservices.php`, {headers: {
             'action': 'getall'
         }})
-        
+        console.log(resp, subresp)
         this.innerHTML = makeTemplate(resp.data, subresp.data)
     }
 

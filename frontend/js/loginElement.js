@@ -1,7 +1,14 @@
+import __SERVER_PATH from './ENV.js'
+
 class LoginElement extends HTMLElement {
     constructor() {
         super()
         this.template = `
+        </div>
+        
+        <div class="container d-flex justify-content-center">
+            <div id="error-login" class="col-12 border border-success rounded my-2">
+            </div>
         </div>
 
         <div class="container d-flex justify-content-center">
@@ -20,7 +27,7 @@ class LoginElement extends HTMLElement {
             </div>
             <div class="col-12">
                 <label for="loginpassword" class="col-12 text-center mt-4">Password</label>
-                <input type="password" name="loginpassword" id="loginpassword" class="form-control col-12 text-center"></input>
+                <input type="password" name="loginpassword" id="loginpassword" class="form-control col-12 text-center" onkeypress="loginForm.readkey(event)"></input>
             </div>
             <div class="col-12">
                 <button type="button" class="btn btn-primary btn-lg btn-block mt-4 col-12" onclick="loginForm.SendDataLogin()">Login</button>
@@ -30,6 +37,13 @@ class LoginElement extends HTMLElement {
             </div>
 
         `
+    }
+
+    readkey(event){
+        let x = event.which || event.keyCode;
+        if(x === 13){
+            this.SendDataLogin()
+        }
     }
 
     async SendDataLogin() {
@@ -42,18 +56,20 @@ class LoginElement extends HTMLElement {
         formData.append("password", password)
         formData.append("action", 'login')
 
-        const resp = await axios.post('http://localhost:8080/api_tros/api_v1/app/login.php', formData, {
+        const resp = await axios.post(`${__SERVER_PATH}/api_v1/app/login.php`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
 
         if (!resp.data.error) {
+           console.log(resp)
             window.localStorage.setItem('session', JSON.stringify({'token':resp.data.token,'id':resp.data.userid, 'username':resp.data.username}))
-            window.location.href = 'http://localhost:8080/api_tros/intranet'
+            window.location.href = `${__SERVER_PATH}/intranet`
         } else {
             window.localStorage.setItem('session', '')
-
+            const errorDiv = document.getElementById('error-login')
+            errorDiv.innerHTML = resp.data.error
             console.log(resp)
         }
 

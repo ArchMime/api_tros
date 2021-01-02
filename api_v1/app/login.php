@@ -1,7 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/database.php';
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/controllers/usersController.php';
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/database.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/controllers/usersController.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/header.php';
 
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['action']) && $_POST['action'] == 'login'){

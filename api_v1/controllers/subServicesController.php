@@ -1,6 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/models/subServicesModel.php';
-include $_SERVER['DOCUMENT_ROOT'].'/api_tros/api_v1/models/authjwtModel.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/models/authjwtModel.php';
 
 function getAllSubServices(){
     try {

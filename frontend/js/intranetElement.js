@@ -1,3 +1,5 @@
+import __SERVER_PATH from './ENV.js'
+
 const session = window.localStorage.getItem('session') ? JSON.parse(window.localStorage.getItem('session')) : ''
 
 
@@ -21,7 +23,7 @@ class IntranetElement extends HTMLElement {
             formData.append("token", session['token'])
             formData.append("action", 'validate')
 
-            const resp = await axios.post('http://localhost:8080/api_tros/api_v1/app/login.php', formData, {
+            const resp = await axios.post(`${__SERVER_PATH}/api_v1/app/login.php`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -36,12 +38,6 @@ class IntranetElement extends HTMLElement {
                 this.innerHTML = `
                 <intranetdashboard-el id="dashboard" panel="home"></intranetdashboard-el>
                 `
-                /* aprendiendo a enviar datos por atributos
-                var obj = {'nombre':'algo', 'nose':'algo2', objfuncion : console.log('envio la funcion')}
-                const intranet = document.querySelector("intranetdashboard-el")
-                intranet.setAttribute('sendprop', JSON.stringify(obj))
-                intranet.setAttribute('session', JSON.stringify(session))
-                */
             }
         } else {
             this.innerHTML = `
@@ -58,7 +54,7 @@ class IntranetElement extends HTMLElement {
             formData.append("token", session['token'])
             formData.append("action", 'validate')
 
-            const resp = await axios.post('http://localhost:8080/api_tros/api_v1/app/login.php', formData, {
+            const resp = await axios.post(`${__SERVER_PATH}/api_v1/app/login.php`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

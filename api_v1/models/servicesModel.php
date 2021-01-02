@@ -38,6 +38,38 @@ class Services
         }
     }
 
+    public static function serviceUpdate($data)
+    {
+        global $conn;
+        $stm = "UPDATE `services` SET `name` = ?, `description` = ?, `value` = ? WHERE `id` = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'ssii', $data['name'],  $data['description'], $data['value'], $data['id']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
+    public static function deleteService($data)
+    {
+        global $conn;
+        $stm = "DELETE FROM `services` WHERE `id` = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'i', $data['id']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
     public static function GetServices()
     {
         global $conn;

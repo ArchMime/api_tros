@@ -10,7 +10,7 @@ function singInUser($username, $password){
             $auxArr = array('token' => Authjwt::createToken($user['username'], $user['id']), 'username'=>$user['username'], 'userid'=>$user['id']);
             echo json_encode($auxArr);
         } else {
-            throw new Exception('user or pass not valid');
+            throw new Exception('Credenciales no validas');
         }
     } catch (Exception $e) {
         $auxArr = array('error' => $e->getMessage());

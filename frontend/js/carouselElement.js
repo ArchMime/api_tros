@@ -1,3 +1,5 @@
+import __SERVER_PATH from './ENV.js'
+
 const dataTemplate = (_attr) => {
     return `
     <link rel="stylesheet" href="./frontend/css/carouselElement.css">
@@ -56,7 +58,7 @@ class CarrouselElement extends HTMLElement {
     }
 
     calledBD = async () => {
-        const resp = await axios.get('http://192.168.1.109:8080/api_tros/api_v1/app/carousel.php')
+        const resp = await axios.get(`${__SERVER_PATH}/api_v1/app/carousel.php`)
         var templateUpdate = dataTemplate(resp.data)
         this.innerHTML = templateUpdate
 

@@ -1,3 +1,5 @@
+import __SERVER_PATH from './ENV.js'
+
 const template = `
     <form class="form-group" action="postulantes" method="POST"
         enctype="multipart/form-data">
@@ -189,7 +191,7 @@ class ApplicantFormElement extends HTMLElement {
             
             console.log(formData)
 
-             const call = await axios.post('http://localhost:8080/api_tros/api_v1/app/applicants.php', formData, {
+             const call = await axios.post(`${__SERVER_PATH}/api_v1/app/applicants.php`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
