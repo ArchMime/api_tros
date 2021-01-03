@@ -118,7 +118,7 @@ class CardServicesElement extends HTMLElement {
                 const data = resp.data[i];
 
                 let mockup = `
-                <cardsubservices-el class="col-12" id="subservice_${this.dataprops['id']}_${data['id']}"></cardsubservices-el>
+                <cardsubservices-el class="col-12" id="subservice_${data['id']}"></cardsubservices-el>
                 `
                 auxtemplate += mockup
             }
@@ -130,20 +130,33 @@ class CardServicesElement extends HTMLElement {
 
         auxtemplate += `
         <div class="d-flex justify-content-center col-12">
-            <button class="btn mx-0 mx-md-2 mr-2 btn-secondary">nuevo sub servicio</button>
+            <button class="btn mx-0 mx-md-2 mr-2 btn-secondary" onclick="cardservice_${this.dataprops.id}.newSubService()">nuevo sub servicio</button>
         </div>
-        </div></div>
+        <div class="row col-12" id="newsubservicecontainer_${this.dataprops.id}">
+
+        </div>
+        </div>
+        </div>
         `
 
         this.innerHTML = template + auxtemplate
 
         if (resp.data.length) {
             for (let i = 0; i < resp.data.length; i++) {
-                const cardsubservices = document.getElementById(`subservice_${this.dataprops['id']}_${resp.data[i]['id']}`)
+                const cardsubservices = document.getElementById(`subservice_${resp.data[i]['id']}`)
                 const data = JSON.stringify(resp.data[i])
                 cardsubservices.setAttribute('dataprop', data)
             }
         }
+    }
+
+    newSubService(){
+        console.log(this.dataprops.id)
+        const newSubService = document.getElementById(`newsubservicecontainer_${this.dataprops.id}`)
+
+        newSubService.innerHTML = `<cardnewsubservice-el id="newsubservice_${this.dataprops.id}"></cardnewsubservice-el>`
+
+        document.getElementById(`newsubservice_${this.dataprops.id}`).setAttribute('dataprop', JSON.stringify(this.dataprops))
     }
 
     connectedCallback() {

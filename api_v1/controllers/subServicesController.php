@@ -22,4 +22,37 @@ function getSubServicesByServices($serviceId){
     }
 }
 
+function createNewSubService($data, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $response = SubServices::newSubService($data);
+        echo json_encode(["newtoken" => $newtoken, "response" => $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function removeSubService($data, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $response = SubServices::deleteSubService($data);
+        echo json_encode(["newtoken" => $newtoken, "response" => $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function updateSubService($data, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $response = SubServices::subServiceUpdate($data);
+        echo json_encode(["newtoken" => $newtoken, "response" => $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
 ?>

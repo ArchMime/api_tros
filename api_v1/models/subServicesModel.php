@@ -67,5 +67,54 @@ class SubServices
             return $subServicesArray;
         }
     }
+
+    public static function newSubService($data)
+    {
+        global $conn;
+        $stm = "INSERT INTO `subservices`(`id`,`service`, `name`, `description`, `value`) VALUES (null, ?,?,?,?)";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'issi', $data['service'], $data['name'],  $data['description'], $data['value']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
+    public static function deleteSubService($data)
+    {
+        global $conn;
+        $stm = "DELETE FROM `subservices` WHERE `id` = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'i', $data['id']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
+    public static function subServiceUpdate($data)
+    {
+        global $conn;
+        $stm = "UPDATE `subservices` SET `name` = ?, `description` = ?, `value` = ? WHERE `id` = ?";
+        $result = mysqli_prepare($conn, $stm);
+        $validate = mysqli_stmt_bind_param($result, 'ssii', $data['name'],  $data['description'], $data['value'], $data['id']);
+        $validate = mysqli_stmt_execute($result);
+        if ($validate) {
+            $arr = array("resp" => "success");
+            return $arr;
+        } else {
+            $arr = array("resp" => "error", "error" => mysqli_error($conn));
+            return $arr;
+        }
+    }
+
 }
 ?>

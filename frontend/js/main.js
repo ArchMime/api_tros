@@ -25,6 +25,8 @@ import './navbarElement.js'
 import './notfoundElement.js'
 import './panelServicesElement.js'
 import './cardUpdateServiceElement.js'
+import './cardNewSubServiceElement.js'
+import './cardUpdateSubServiceElement.js'
 
 /*
 paleta de colores
@@ -48,9 +50,8 @@ class MainElement extends HTMLElement{
         `
     }
     connectedCallback(){
-        //console.clear()
+        console.clear()
         this.innerHTML = this.main
-        console.log('en main')
         document.getElementById('loader').style.display = 'none'
         document.getElementById('navbarLanding').style.display = ''
     }
