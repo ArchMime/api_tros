@@ -12,14 +12,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
          * request body/data
          * request body/file
          */
-        if(isset($_FILES['cv'])){
-            $cv = $_FILES['cv'];
-        } else {
-            $cv = '';
-        }
+        if(isset($headers['action']) and $headers['action'] == 'update'){
 
-        $data = $_POST;
-        createNewApplicant($cv, $data);
+            actualizateApplication($_POST['id'], $_POST['contacted'], $_POST['comment'], $headers['token']);
+
+        }else{
+
+            if(isset($_FILES['cv'])){
+                $cv = $_FILES['cv'];
+            } else {
+                $cv = '';
+            }
+            
+            $data = $_POST;
+            createNewApplicant($cv, $data);
+        }
         break;
     case 'GET':
         /**
@@ -34,15 +41,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
     case 'PUT':
-        /**
-         * PUT actualizate applicants
-         * request id_app - contacted (true or false) - coment
-         *
-         */
-        $id_app = $headers['id_app'];
-        $contacted = $headers['contacted'];
-        $coment = $headers['coment'];
-        actualizateApplication($id_app, $contacted, $coment, $headers['token']);
         break;
     case 'DELETE':
         /**

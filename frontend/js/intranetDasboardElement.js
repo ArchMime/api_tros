@@ -91,11 +91,7 @@ class IntranetDashboardElement extends HTMLElement {
                 break;
             case 'applicants':
                 this.panel = `
-                    <div id="panel" class="d-flex justify-content-center mt-3">
-    
-                        <p>postulantes</p>
-    
-                    </div>
+                    <panelaplicants-el></panelaplicants-el>
                     `
                 break;
             case 'gallery':
