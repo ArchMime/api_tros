@@ -14,3 +14,25 @@ function createNewMessage($archive, $data){
         echo json_encode($auxArr);
     }
 }
+
+function readMessages($token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $response = Contacted::readAllMessage();
+        echo json_encode(["newtoken" => $newtoken, "response" => $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}
+
+function checkMessage($id, $token){
+    try {
+        $newtoken = Authjwt::Check($token);
+        $response = Contacted::updateMessage($id);
+        echo json_encode(["newtoken" => $newtoken, "response" => $response]);
+    }  catch (Exception $e) {
+        $auxArr = array('error' => $e->getMessage());
+        echo json_encode($auxArr);
+    }
+}

@@ -16,8 +16,8 @@ class IntranetDashboardElement extends HTMLElement {
 
     panels(action) {
         switch (action) {
-            case 'webdata':
-                document.getElementById('dashboard').setAttribute('panel', 'webdata')
+            case 'message':
+                document.getElementById('dashboard').setAttribute('panel', 'message')
 
                 break;
 
@@ -70,13 +70,9 @@ class IntranetDashboardElement extends HTMLElement {
                 </div>
                 `
                 break
-            case 'webdata':
+            case 'message':
                 this.panel = `
-                <div id="panel" class="d-flex justify-content-center mt-3">
-
-                    <p>webdata</p>
-
-                </div>
+                <panelcontacted-el id="panelcontacted" position="list"></panelcontacted-el>
                 `
                 break;
             case 'services':
@@ -152,10 +148,10 @@ class IntranetDashboardElement extends HTMLElement {
 
                 <div class="collapse navbar-collapse justify-content-center" id="navbarToggler">
                     <div class="navbar-nav align-items-center">
-                        <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('webdata')">Editar información web</button>
-                        <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('services')">Servicios</button>
                         <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('booking')">Contrataciones</button>
+                        <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('message')">Mensajes</button>
                         <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('applicants')">Postulantes</button>
+                        <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('services')">Servicios</button>
                         <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('gallery')">Galeria</button>
                         <button class="btn btn-lg btn-light btn-block my-1 text-nowrap" onclick="dashboard.panels('users')">Usuarios</button>
                     </div>

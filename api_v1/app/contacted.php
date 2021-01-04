@@ -7,31 +7,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/api_tros/api_v1/header.php';
 $headers = getallheaders();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
-        /**
-         * POST create new application
-         * request body/data
-         * request body/file
-         */
-        if(isset($_FILES['archive'])){
-            $archive = $_FILES['archive'];
+        if(isset($headers['action']) and $headers['action'] == 'update'){
+            checkMessage($_POST['id'], $headers['token']);
         } else {
-            $archive = '';
+            if(isset($_FILES['archive'])){
+                $archive = $_FILES['archive'];
+            } else {
+                $archive = '';
+            }
+            echo($_POST['name']);
+            $data = $_POST;
+            createNewMessage($archive, $data);
         }
-        echo($_POST['name']);
-        $data = $_POST;
-        createNewMessage($archive, $data);
         break;
     case 'GET':
-        /**
-         * GET list applications 
-         * one request id-application
-         * all request none
-         */
-        if (isset($headers['id-application'])) {
-            returnOneApplication($headers['id-application'], $headers['token']);
-        } else {
-            returnAllApplicant($headers['token']);
-        }
+        readMessages($headers['token']);
         break;
     case 'PUT':
         /**

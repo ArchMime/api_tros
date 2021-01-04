@@ -73,7 +73,6 @@ class ActivityListElement extends HTMLElement {
         const subresp = await axios.get(`${__SERVER_PATH}/api_v1/app/subservices.php`, {headers: {
             'action': 'getall'
         }})
-        console.log(resp, subresp)
         this.innerHTML = makeTemplate(resp.data, subresp.data)
     }
 
